@@ -2,10 +2,9 @@ import { context } from 'esbuild';
 import { rmSync } from 'fs';
 import process from 'node:process';
 import path from 'path';
-import { BUILD_DIR } from './commons/commons.js';
+import { DEV_DIR, BUILD_DIR } from './commons/commons.js';
 
-const outDir = path.join('./out');
-const publicDir = path.join(outDir, BUILD_DIR);
+const publicDir = path.join(DEV_DIR, BUILD_DIR);
 
 const staticAssetsBuild = await context({
     entryPoints: ['index.html', 'favicon/*'],
@@ -33,18 +32,17 @@ const buildCss = await context({
 });
 
 const buildJs = await context({
-    entryPoints: ['app.js'],
+    entryPoints: ['js/app.js'],
     format: 'esm',
     bundle: true,
     logLevel: 'info',
-    outdir: `${publicDir}`
+    outdir: `${path.join(publicDir, 'js')}`
 });
 
 //Setting up for cleanup when process is interrupted
 process.on('SIGINT', () => {
-    console.log(`\nDeleting ${outDir} directory and exiting...`);
-    rmSync(outDir, { recursive: true });
-    console.log(buildJs);
+    console.log(`\nDeleting ${path.resolve(DEV_DIR)} directory and exiting...`);
+    rmSync(path.resolve(DEV_DIR), { recursive: true });
     process.exit(0);
 });
 
