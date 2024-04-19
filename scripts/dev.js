@@ -24,6 +24,13 @@ const buildJs = await context({
     format: 'esm',
     bundle: true,
     logLevel: 'info',
+    plugins: [
+        buildRoutesPlugin({
+            src: `${path.join(publicDir, 'js', 'pages')}`,
+            dest: `${path.join(publicDir, 'js')}`,
+            file: 'routes.json'
+        })
+    ],
     outdir: `${path.join(publicDir, 'js')}`
 });
 
@@ -37,13 +44,6 @@ const staticAssetsBuild = await context({
         '.webmanifest': 'copy',
         '.xml': 'copy'
     },
-    plugins: [
-        buildRoutesPlugin({
-            src: `${path.join(publicDir, 'js', 'pages')}`,
-            dest: `${path.join(publicDir, 'js')}`,
-            file: 'routes.json'
-        })
-    ],
     outdir: `${publicDir}`
 });
 

@@ -1,5 +1,6 @@
 import { build } from 'esbuild';
 import path from 'path';
+import buildRoutesPlugin from './esbuild-plugins/build-routes.js';
 import { BUILD_DIR } from './commons/commons.js';
 
 await build({
@@ -39,5 +40,12 @@ await build({
     drop: ['debugger', 'console'],
     dropLabels: ['DEV'],
     logLevel: 'info',
+    plugins: [
+        buildRoutesPlugin({
+            src: `${path.join(BUILD_DIR, 'js', 'pages')}`,
+            dest: `${path.join(BUILD_DIR, 'js')}`,
+            file: 'routes.json'
+        })
+    ],
     outdir: `${path.join(BUILD_DIR, '/js')}`
 });
