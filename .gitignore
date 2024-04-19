@@ -1,0 +1,15 @@
+.env*
+.idea/
+.zed/
+*.iml
+*.iws
+*.eml
+out/
+.DS_Store
+.svn
+log/*.log
+tmp/**
+node_modules/
+.vscode
+public/
+cache/
