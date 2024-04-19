@@ -3,21 +3,9 @@ import { rmSync } from 'fs';
 import process from 'node:process';
 import path from 'path';
 import { DEV_DIR, BUILD_DIR } from './commons/commons.js';
+import buildRoutesPlugin from './esbuild-plugins/build-routes.js';
 
 const publicDir = path.join(DEV_DIR, BUILD_DIR);
-
-const staticAssetsBuild = await context({
-    entryPoints: ['index.html', 'favicon/*'],
-    loader: {
-        '.ico': 'copy',
-        '.png': 'copy',
-        '.html': 'copy',
-        '.svg': 'copy',
-        '.webmanifest': 'copy',
-        '.xml': 'copy'
-    },
-    outdir: `${publicDir}`
-});
 
 const buildCss = await context({
     entryPoints: ['css/*.css'],
@@ -32,11 +20,31 @@ const buildCss = await context({
 });
 
 const buildJs = await context({
-    entryPoints: ['js/app.js'],
+    entryPoints: ['js/app.js', 'js/**/*.js'],
     format: 'esm',
     bundle: true,
     logLevel: 'info',
     outdir: `${path.join(publicDir, 'js')}`
+});
+
+const staticAssetsBuild = await context({
+    entryPoints: ['index.html', 'favicon/*'],
+    loader: {
+        '.ico': 'copy',
+        '.png': 'copy',
+        '.html': 'copy',
+        '.svg': 'copy',
+        '.webmanifest': 'copy',
+        '.xml': 'copy'
+    },
+    plugins: [
+        buildRoutesPlugin({
+            src: `${path.join(publicDir, 'js', 'pages')}`,
+            dest: `${path.join(publicDir, 'js')}`,
+            file: 'routes.json'
+        })
+    ],
+    outdir: `${publicDir}`
 });
 
 //Setting up for cleanup when process is interrupted
