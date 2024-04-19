@@ -22,7 +22,7 @@ npm install
 
 ## Routing your app
 
--   Add your page in `src/pages` folder
+-   Add your page in `/js/pages` folder
 -   The file name should be the same as the route name
 -   Routes are created on build time and will have the same name as the file
 
