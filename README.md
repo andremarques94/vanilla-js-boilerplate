@@ -19,6 +19,7 @@ npm install
 -   ESLINT && PRETTIER
 -   ROUTING
 -   DEV SERVER
+-   BUILD SCRIPT
 
 ## Routing your app
 
