@@ -20,8 +20,8 @@ const getDirectories = async source => {
             },
             {
                 currentPath: {
-                    path: '/home',
-                    page: 'home'
+                    path: '',
+                    page: ''
                 }
             }
         );
@@ -29,13 +29,13 @@ const getDirectories = async source => {
 
 export default ({ src, dest, file }) => {
     return {
-        name: 'build-routes-json',
+        name: 'route-builder',
         setup(build) {
             build.onEnd(async () => {
                 const routes = JSON.stringify(await getDirectories(src));
 
                 await fs.mkdir(dest, { recursive: true });
-                await fs.writeFile(`${dest}/${file}`, routes);
+                await fs.writeFile(`${nodepath.join(dest, file)}`, routes);
             });
         }
     };

@@ -35,9 +35,11 @@ const buildJs = await context({
 });
 
 const staticAssetsBuild = await context({
-    entryPoints: ['index.html', 'favicon/*'],
+    entryPoints: ['index.html', 'favicon/*', 'assets/*'],
     loader: {
         '.ico': 'copy',
+        '.jpg': 'copy',
+        '.jpeg': 'copy',
         '.png': 'copy',
         '.html': 'copy',
         '.svg': 'copy',
