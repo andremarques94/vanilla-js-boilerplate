@@ -23,8 +23,9 @@ npm install
 
 ## Routing your app
 
+This template uses a file-system based router
+
 -   Add your page in `/js/pages` folder
--   The file name should be the same as the route name
 -   Routes are created on build time and will have the same name as the file
 
 e.g.
