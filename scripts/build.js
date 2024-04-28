@@ -39,7 +39,7 @@ await build({
     splitting: true,
     treeShaking: true,
     loader: { '.html': 'text' },
-    drop: ['debugger', 'console'],
+    drop: ['debugger'],
     dropLabels: ['DEV'],
     logLevel: 'info',
     plugins: [
