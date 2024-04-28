@@ -1,1 +1,1 @@
-import{a,b}from"./chunk-25HZ3T5O.js";export{b as default,a as navigate};
+import{a,b}from"./chunk-OFBR4Y7N.js";export{b as default,a as navigate};
