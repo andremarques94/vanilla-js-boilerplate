@@ -6,7 +6,6 @@ function render(elem) {
       <h2>USING ESBUILD</h2>
       <br>
       <br>
-      <h2>TEST ACTION</h2>
       <h2>To get started, add a new file to <code>js/pages</code> and save to reload.</h2>
       <br>
       <h2>Happy coding!</h2>
