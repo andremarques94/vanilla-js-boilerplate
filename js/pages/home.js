@@ -1,5 +1,5 @@
 function t(e){e.style="width:100%; height:100%;display:flex;justify-content:center;align-items:center;",e.innerHTML=`<div style="text-align: center;">
-      <img src="/assets/shameless.png" style="width: 300px; height: 300px; margin-bottom: 20px;">
+      <img src="./assets/shameless.png" style="width: 300px; height: 300px; margin-bottom: 20px;">
       <h1>BOILERPLATE FOR VANILLA-JS APPS</h1>
       <h2>USING ESBUILD</h2>
       <br>
