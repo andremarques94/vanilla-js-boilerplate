@@ -32,7 +32,7 @@ await build({
 });
 
 await build({
-    entryPoints: ['js/app.js', 'js/**/*.js'],
+    entryPoints: ['js/app.js', 'js/**/*.js', 'js/**/*.jsx'],
     format: 'esm',
     bundle: true,
     minify: true,

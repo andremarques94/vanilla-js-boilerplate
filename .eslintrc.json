@@ -1,17 +1,27 @@
 {
     "env": {
         "browser": true,
-        "es2023": true
+        "es2023": true,
+        "node": true
     },
-    "extends": ["eslint:recommended", "plugin:prettier/recommended"],
+    "extends": [
+        "eslint:recommended",
+        "plugin:prettier/recommended",
+        "plugin:import/errors",
+        "plugin:react/recommended",
+        "plugin:jsx-a11y/recommended"
+    ],
+    "plugins": ["react", "import", "jsx-a11y"],
     "parserOptions": {
         "ecmaVersion": "latest",
         "sourceType": "module",
         "ecmaFeatures": {
+            "jsx": true,
             "impliedStrict": true
         }
     },
     "rules": {
+        "react/prop-types": 0,
         "strict": [2, "global"],
         "eqeqeq": [2, "smart"],
         "no-unused-vars": [
@@ -19,5 +29,10 @@
             { "vars": "all", "args": "after-used", "ignoreRestSiblings": true }
         ],
         "no-console": "off"
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
     }
 }
